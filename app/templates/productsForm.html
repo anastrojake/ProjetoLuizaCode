@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Visualização</title>
+    <title>Formulário</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 
@@ -17,8 +17,12 @@
     </div>
 
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <strong>Empresa: </strong>{{db.empresa}}<br>
-        <strong>CNPJ: </strong>{{db.cnpj}}<br>
+        <form name="form" id="form" action="{% if db %}/produto/update/{{db.id}}/{%else%}/produto/create/2/{% endif %}" method="post">
+            {% csrf_token %}
+            <!--{{form.as_p}}-->
+            <div class="form-group mt-4">Produto: {{form.produto}}</div>
+            <input type="submit" class="btn btn-success" value="Salvar">
+        </form>
     </div>
 </body>
 </html>

@@ -1,23 +1,23 @@
 from django.shortcuts import render, redirect
-from app.forms import CarrosForm
-from app.models import Carros
-
+from app.forms import EmpresaForm
+from app.models import Empresa, Produto
+from django.core import serializers
 
 # Create your views here.
 def home(request):
     data = {}
-    data['db'] = Carros.objects.all()
+    data['db'] = Empresa.objects.all()
     return render(request, 'index.html', data)
 
 
 def form(request):
     data = {}
-    data['form'] = CarrosForm()
+    data['form'] = EmpresaForm()
     return render(request, 'form.html', data)
 
 
 def create(request):
-    form = CarrosForm(request.POST or None)
+    form = EmpresaForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('home')
@@ -25,27 +25,34 @@ def create(request):
 
 def view(request, pk):
     data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    return render(request, 'view.html', data)
+    produtos = list(Produto.objects.filter(empresa_id=pk).all())
+    produtos_json = serializers.serialize('json', produtos)
+    data['db'] = produtos_json
+    return render(request, 'indexProducts.html', data)
 
 
 def edit(request, pk):
     data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    data['form'] = CarrosForm(instance=data['db'])
+    data['db'] = Empresa.objects.get(pk=pk)
+    data['form'] = EmpresaForm(instance=data['db'])
     return render(request, 'form.html', data)
 
 
 def update(request, pk):
     data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    form = CarrosForm(request.POST or None, instance=data['db'])
+    data['db'] = Empresa.objects.get(pk=pk)
+    form = EmpresaForm(request.POST or None, instance=data['db'])
     if form.is_valid():
         form.save()
         return redirect('home')
 
 
 def delete(request, pk):
-    db = Carros.objects.get(pk=pk)
+    db = Empresa.objects.get(pk=pk)
     db.delete()
     return redirect('home')
+
+
+def produtos(request):
+    return render(request, "indexProducts.html")
+

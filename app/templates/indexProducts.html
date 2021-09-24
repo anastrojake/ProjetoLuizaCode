@@ -9,11 +9,11 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Cadastro de Empresas e Produtos</h1>
+        <h1>Cadastro de Produtos</h1>
     </div>
 
     <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/form" class=" btn btn-success">Adicionar</a>
+        <a href="/produto/form/" class=" btn btn-success">Adicionar Produto</a>
     </div>
 
     <div class="col-8 m-auto pt-4 pb-2 text-center">
@@ -21,8 +21,7 @@
           <thead class="table-dark">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Empresa</th>
-              <th scope="col">CNPJ</th>
+              <th scope="col">Nome do Produto</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -30,13 +29,11 @@
           {% for dbs in db %}
            <tr>
               <th>{{dbs.id}}</th>
-              <td>{{dbs.empresa}}</td>
-              <td>{{dbs.cnpj}}</td>
+              <td>{{dbs.produto}}</td>
               <td>
-                  <a href="/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
-                  <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
-                  <a href="/produto/" class="btn btn-primary">Add Produto</a>
-                  <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                  <a href="/produto/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
+                  <a href="/produto/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
+                  <a href="/produto/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
 
               </td>
            </tr>
