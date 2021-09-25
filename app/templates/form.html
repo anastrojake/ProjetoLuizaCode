@@ -11,19 +11,26 @@
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <h1>Cadastro</h1>
     </div>
-
-    <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/" class=" btn btn-info">Voltar</a>
-    </div>
-
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}" method="post">
+         <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}" method="post">
             {% csrf_token %}
-            <!--{{form.as_p}}-->
-            <div class="form-group mt-4">Empresa: {{form.empresa}}</div>
-            <div class="form-group mt-4">CNPJ: {{form.cnpj}}</div>
-            <input type="submit" class="btn btn-success" value="Salvar">
-        </form>
+        <div class="row>
+           <div class="col">
+                <input type="text" class="form-control" placeholder= "Empresa: " aria-label="Insira o nome da empresa">
+           </div>
+           <div class="col">'
+                <input type="text" class="form-control" placeholder= "CNPJ: " aria-label="Insira o CNPJ da empresa">
+           </div>
+            <div class="col">'
+                <input type="text" class="form-control" placeholder= "E-mail: " aria-label="Insira o e-mail">
+            </div>
+        </div>
+        <br>
+             <div class="col text-center" >
+              <input type="submit" class="btn btn-success" value="Salvar">
+              <a href="/" class=" btn btn-info">Voltar</a>
+            </div>
+         </form>
     </div>
 </body>
 </html>
