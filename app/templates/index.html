@@ -9,16 +9,15 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Cadastro de Empresas e Produtos</h1>
+        <nav  class="d-block p-2 bg-light text-dark">
+            <span class="navbar-text m-auto ">
+            <h3>Cadastro de Empresas e Produtos</h3>
+            </span>
+        </nav>
     </div>
-
-    <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/form" class=" btn btn-success">Adicionar</a>
-    </div>
-
     <div class="col-8 m-auto pt-4 pb-2 text-center">
         <table class="table">
-          <thead class="table-dark">
+          <thead class="table-danger">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Empresa</th>
@@ -33,9 +32,9 @@
               <td>{{dbs.empresa}}</td>
               <td>{{dbs.cnpj}}</td>
               <td>
-                  <a href="/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
+                  <a href="/view/{{dbs.id}}/" class="btn btn-info">Visualizar</a>
                   <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
-                  <a href="/produto/{{dbs.id}}" class="btn btn-primary">Add Produto</a>
+                  <a href="/produto/{{dbs.id}}" class="btn btn-secondary">Add Produto</a>
                   <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
 
               </td>
@@ -44,6 +43,9 @@
 
           </tbody>
         </table>
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <a href="/form" class=" btn btn-success">Adicionar Empresa</a>
+    </div>
     </div>
 
     {% load static %}
