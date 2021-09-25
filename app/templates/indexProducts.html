@@ -9,16 +9,15 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Cadastro de Produto</h1>
+       <nav  class="d-block p-2 bg-light text-dark">
+            <span class="navbar-text m-auto ">
+              <h3>Cadastro de Produtos</h3>
+            </span>
+        </nav>
     </div>
-
-    <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/produto/form/{{empresa_id}}/" class=" btn btn-success">Adicionar Produto</a>
-    </div>
-
     <div class="col-8 m-auto pt-4 pb-2 text-center">
         <table class="table">
-          <thead class="table-dark">
+          <thead class="table-danger">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nome do Produto</th>
@@ -31,8 +30,8 @@
               <th>{{dbs.id}}</th>
               <td>{{dbs.produto}}</td>
               <td>
-                  <a href="/produto/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
-                  <a href="/produto/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
+                  <a href="/produto/view/{{dbs.id}}/" class="btn btn-info">Visualizar</a>
+                  <a href="/produto/edit/{{dbs.id}}/" class="btn btn-secondary">Editar</a>
                   <a href="/produto/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
 
               </td>
@@ -41,6 +40,10 @@
 
           </tbody>
         </table>
+      <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <a href="/produto/form/{{empresa_id}}/" class=" btn btn-success">Adicionar Produto</a>
+    </div>
+
     </div>
 
     {% load static %}
