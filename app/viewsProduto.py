@@ -6,26 +6,27 @@ import json
 # Create your views here.
 
 
-def home(request):
+def home(request,pk):
     data = {}
-    data['db'] = Produto.objects.all()
+    data['db'] = Produto.objects.filter(empresa_id=pk)
     return render(request, 'indexProducts.html', data)
 
-def form(request):
+def form(request, pk):
     data = {}
     data['form'] = ProdutosForm()
+    data["empresa_id"] = pk
     return render(request, 'productsForm.html', data)
 
 def create(request,pk):
     empresa = Empresa.objects.get(pk=pk)
     produto = Produto(empresa=empresa, produto=request.POST.get("produto"))
     produto.save()
-    return redirect('homeproduto')
+    return redirect('homeproduto', pk)
 
 def view(request, pk):
     data = {}
     data['db'] = Produto.objects.get(pk=pk)
-    return render(request, 'view.html', data)
+    return render(request, 'viewProducts.html', data)
 
 def edit(request, pk):
     data = {}

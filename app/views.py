@@ -25,10 +25,8 @@ def create(request):
 
 def view(request, pk):
     data = {}
-    produtos = list(Produto.objects.filter(empresa_id=pk).all())
-    produtos_json = serializers.serialize('json', produtos)
-    data['db'] = produtos_json
-    return render(request, 'indexProducts.html', data)
+    data['db'] = Empresa.objects.get(pk=pk)
+    return render(request, 'view.html', data)
 
 
 def edit(request, pk):
@@ -53,6 +51,14 @@ def delete(request, pk):
     return redirect('home')
 
 
-def produtos(request):
-    return render(request, "indexProducts.html")
+def produtos(request, pk):
+    data = {}
+    data['db'] = Produto.objects.filter(empresa_id=pk)
+    data["empresa_id"] = pk
+    # data = {}
+    # produtos = list(Produto.objects.filter(empresa_id=pk).all())
+    # produtos_json = serializers.serialize('json', produtos)
+    # data['db'] = produtos_json
+    print(data)
+    return render(request, "indexProducts.html", data)
 
