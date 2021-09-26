@@ -21,6 +21,10 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nome do Produto</th>
+              <th scope="col">Codigo do Produto</th>
+              <th scope="col">Descricao do Produto</th>
+              <th scope="col">Marca do Produto</th>
+              <th scope="col">Valor do Produto</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -29,6 +33,10 @@
            <tr>
               <th>{{dbs.id}}</th>
               <td>{{dbs.produto}}</td>
+              <td>{{dbs.codigo}}</td>
+              <td>{{dbs.descricao}}</td>
+              <td>{{dbs.marca}}</td>
+              <td>{{dbs.valor}}</td>
               <td>
                   <a href="/produto/view/{{dbs.id}}/" class="btn btn-info">Visualizar</a>
                   <a href="/produto/edit/{{dbs.id}}/" class="btn btn-secondary">Editar</a>
