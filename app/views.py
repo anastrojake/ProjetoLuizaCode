@@ -7,10 +7,11 @@ from django.core.paginator import Paginator
 
 def home(request):
     data = {}
-    all = Empresa.objects.all()
-    paginator = Paginator(all, 10)
-    pages = request.GET.get('page')
-    data['db'] = paginator.get_page(pages)
+    search = request.GET.get('search')
+    if search:
+        data['db'] = Empresa.objects.filter(nome__icontains=search)
+    else:
+        data['db'] = Empresa.objects.all()
     return render(request, 'index.html', data)
 
 
@@ -18,7 +19,6 @@ def form(request):
     data = {}
     data['form'] = EmpresaForm()
     return render(request, 'form.html', data)
-
 
 def create(request):
     form = EmpresaForm(request.POST or None)

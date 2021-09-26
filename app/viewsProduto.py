@@ -3,12 +3,10 @@ from app.forms import ProdutosForm
 from app.models import Produto, Empresa
 import json
 
-# Create your views here.
 
-
-def home(request,pk):
+def home(request):
     data = {}
-    data['db'] = Produto.objects.filter(empresa_id=pk)
+    data['db'] = Produto.objects.filter(nome_id_pk)
     return render(request, 'indexProducts.html', data)
 
 def form(request, pk):
