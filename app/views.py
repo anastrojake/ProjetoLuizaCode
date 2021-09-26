@@ -1,12 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from app.forms import EmpresaForm
 from app.models import Empresa, Produto
 from django.core import serializers
+from django.core.paginator import Paginator
 
-# Create your views here.
+
 def home(request):
     data = {}
-    data['db'] = Empresa.objects.all()
+    all = Empresa.objects.all()
+    paginator = Paginator(all, 10)
+    pages = request.GET.get('page')
+    data['db'] = paginator.get_page(pages)
     return render(request, 'index.html', data)
 
 
@@ -20,7 +24,7 @@ def create(request):
     form = EmpresaForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('home')
+    return redirect('home')
 
 
 def view(request, pk):

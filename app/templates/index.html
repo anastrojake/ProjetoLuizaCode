@@ -22,6 +22,7 @@
               <th scope="col">#</th>
               <th scope="col">Empresa</th>
               <th scope="col">CNPJ</th>
+              <th scope="col">E-mail</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -31,21 +32,32 @@
               <th>{{dbs.id}}</th>
               <td>{{dbs.empresa}}</td>
               <td>{{dbs.cnpj}}</td>
+              <td>{{dbs.email}}</td>
               <td>
                   <a href="/view/{{dbs.id}}/" class="btn btn-info">Visualizar</a>
                   <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
-                  <a href="/produto/{{dbs.id}}" class="btn btn-secondary">Add Produto</a>
+                  <a href="/produto/{{dbs.id}}" class="btn btn-secondary">Produtos</a>
                   <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
-
               </td>
            </tr>
           {% endfor %}
-
           </tbody>
         </table>
     <div class="col-8 m-auto pt-3 pb-2 text-center">
         <a href="/form" class=" btn btn-success">Adicionar Empresa</a>
     </div>
+    </div>
+
+    <div class="paginaton">
+        {% if db.has_previous %}
+        <a href="?page={{db.previous_page_number}}"> > </a>
+        {% endif %}
+
+        {{db.number}}
+
+        {% if db.has_next %}
+        <a href="?page={{db.previous_page_number}}"> < </a>
+        {% endif %}
     </div>
 
     {% load static %}
