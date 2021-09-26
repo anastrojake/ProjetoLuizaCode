@@ -19,7 +19,11 @@ def form(request, pk):
 
 def create(request,pk):
     empresa = Empresa.objects.get(pk=pk)
-    produto = Produto(empresa=empresa, produto=request.POST.get("produto"))
+    produto = Produto(empresa=empresa, nome=request.POST.get('nome'),
+                                       codigo=request.POST.get('codigo'),
+                                       descricao=request.POST.get('descricao'),
+                                       marca=request.POST.get('marca'),
+                                       valor=request.POST.get('valor'))
     produto.save()
     return redirect('homeproduto', pk)
 

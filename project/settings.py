@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_cpf_cnpj',
     'app'
 ]
 
@@ -79,7 +78,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            #BASE_DIR / 'db.sqlite3'
     }
 }
 
@@ -128,5 +126,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DECIMAL_SEPARATOR = ','
-USE_THOUSAND_SEPARATOR = True

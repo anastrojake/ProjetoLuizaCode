@@ -14,13 +14,14 @@
             <h3>Cadastro de Empresas e Produtos</h3>
             </span>
         </nav>
+
     </div>
     <div class="col-8 m-auto pt-4 pb-2 text-center">
         <table class="table">
           <thead class="table-danger">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Empresa</th>
+              <th scope="col">Nome</th>
               <th scope="col">CNPJ</th>
               <th scope="col">Email</th>
               <th scope="col">Ações</th>
@@ -30,7 +31,7 @@
            {% for dbs in db %}
            <tr>
               <th>{{dbs.id}}</th>
-              <td>{{dbs.empresa}}</td>
+              <td>{{dbs.nome}}</td>
               <td>{{dbs.cnpj}}</td>
               <td>{{dbs.email}}</td>
               <td>

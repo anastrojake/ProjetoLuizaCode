@@ -19,7 +19,7 @@
     <div class="col-8 m-auto pt-4 pb-2 text-center">
         <form name="form" id="form" action="{% if db %}/produto/update/{{db.id}}/{%else%}/produto/create/{{empresa_id}}/{% endif %}" method="post">
             {% csrf_token %}
-            <div class="form-group mt-4">Produto: {{form.produto}}</div>
+            <div class="form-group mt-4">Nome: {{form.nome}}</div>
             <br>
             <div class="form-group mt-4">Codigo {{form.codigo}}</div>
             <br>
@@ -27,13 +27,8 @@
             <br>
             <div class="form-group mt-4">Marca: {{form.marca}}</div>
             <br>
-            <div class="form-group mt-4" type="number">Valor: {{form.valor}}</div>
+           <div class="form-group mt-4">Valor: {{form.valor}}</div>
             <br>
-             <input type="submit" class="btn btn-success" value="Salvar">
-            <div class="col-8 m-auto pt-3 pb-2 text-center">
-            <a href="/" class=" btn btn-info">Voltar</a>
-            </div>
-             <input id="valor" name="valor" type="number" step="0.010"  value="0">
              <input type="submit" class="btn btn-success" value="Salvar">
         </form>
     </div>
