@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-crud
+spec:
+  selector:
+    matchLabels:
+      app: python-crud
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: python-crud
+    spec:
+      containers:
+        - name: python-crud
+          image: anastrojake/luizacodeg5:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
