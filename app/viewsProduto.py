@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
-from app.forms import ProdutosForm
+from app.forms import ProdutosForm, EmpresaForm
 from app.models import Produto, Empresa
 import json
 
-
-def home(request):
+def home(request, pk):
     data = {}
-    data['db'] = Produto.objects.filter(nome_id_pk)
+    data['db'] = Produto.objects.filter(empresa_id=pk)
     return render(request, 'indexProducts.html', data)
 
 def form(request, pk):
@@ -15,13 +14,14 @@ def form(request, pk):
     data["empresa_id"] = pk
     return render(request, 'productsForm.html', data)
 
-def create(request,pk):
+def create(request, pk):
     empresa = Empresa.objects.get(pk=pk)
     produto = Produto(empresa=empresa, nome=request.POST.get('nome'),
-                                       codigo=request.POST.get('codigo'),
-                                       descricao=request.POST.get('descricao'),
-                                       marca=request.POST.get('marca'),
-                                       valor=request.POST.get('valor'))
+                      codigo=request.POST.get('codigo'),
+                      descricao=request.POST.get('descricao'),
+                      marca=request.POST.get('marca'),
+                      valor=request.POST.get('valor')
+                      )
     produto.save()
     return redirect('homeproduto', pk)
 

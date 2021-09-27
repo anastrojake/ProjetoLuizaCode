@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 from app import viewsProduto
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,3 +37,4 @@ urlpatterns = [
     path('produto/update/<int:pk>/', viewsProduto.update, name='update'),
     path('produto/delete/<int:pk>/', viewsProduto.delete, name='delete'),
 ]
+

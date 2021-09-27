@@ -9,27 +9,37 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Cadastro</h1>
+        <nav class="d-block p-2 bg-light text-dark">
+            <span class="navbar-text m-auto ">
+            <h1>Cadastrar Produtos</h1>
+            </span>
+        </nav>
     </div>
-
-    <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/" class=" btn btn-info">Voltar</a>
-    </div>
-
     <div class="col-8 m-auto pt-4 pb-2 text-center">
         <form name="form" id="form" action="{% if db %}/produto/update/{{db.id}}/{%else%}/produto/create/{{empresa_id}}/{% endif %}" method="post">
             {% csrf_token %}
-            <div class="form-group mt-4">Nome: {{form.nome}}</div>
-            <br>
-            <div class="form-group mt-4">Codigo {{form.codigo}}</div>
-            <br>
-            <div class="form-group mt-4">Descrição: {{form.descricao}}</div>
-            <br>
-            <div class="form-group mt-4">Marca: {{form.marca}}</div>
-            <br>
-           <div class="form-group mt-4">Valor: {{form.valor}}</div>
-            <br>
-             <input type="submit" class="btn btn-success" value="Salvar">
+          <table class="table table-borderless table-striped">
+              <thead class="table-danger">
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Valor</th>
+                  </tr>
+              </thead>
+               <tr>
+                  <td>{{form.nome}}</td>
+                  <td>{{form.codigo}}</td>
+                  <td>{{form.descricao}}</td>
+                  <td>{{form.marca}}</td>
+                  <td>{{form.valor}}</td>
+               </tr>
+          </table>
+        <div class="btn-group">
+          <input type="submit" class="btn btn-success" value="Salvar">
+          <a href="/" class=" btn btn-info">Voltar</a>
+        </div>
         </form>
     </div>
 </body>

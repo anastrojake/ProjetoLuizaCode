@@ -9,17 +9,32 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Cadastro</h1>
+        <nav class="d-block p-2 bg-light text-dark">
+            <span class="navbar-text m-auto ">
+            <h1>Empresas</h1>
+            </span>
+        </nav>
     </div>
-
-    <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/" class=" btn btn-info">Voltar</a>
-    </div>
-
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <strong>Nome: </strong>{{db.nome}}<br>
-        <strong>CNPJ: </strong>{{db.cnpj}}<br>
-        <strong>Email </strong>{{db.email}}<br>
+      <table class="table table-borderless table-striped">
+          <thead class="table-danger">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">CNPJ</th>
+              <th scope="col">Email</th>
+              </tr>
+          </thead>
+           <tr>
+              <td>{{db.id}}</td>
+              <td>{{db.nome}}</td>
+              <td>{{db.cnpj}}</td>
+              <td>{{db.email}}</td>
+           </tr>
+      </table>
+    </div>
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+       <a href="/" class=" btn btn-info">Voltar</a>
     </div>
 </body>
 </html>

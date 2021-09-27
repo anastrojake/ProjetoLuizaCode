@@ -7,13 +7,16 @@ from django.core.paginator import Paginator
 
 def home(request):
     data = {}
+    all = Empresa.objects.all()
+    paginator = Paginator(all, 5)
+    pages = request.GET.get('page')
+    data['db'] = paginator.get_page(pages)
     search = request.GET.get('search')
     if search:
         data['db'] = Empresa.objects.filter(nome__icontains=search)
     else:
         data['db'] = Empresa.objects.all()
     return render(request, 'index.html', data)
-
 
 def form(request):
     data = {}
@@ -59,10 +62,6 @@ def produtos(request, pk):
     data = {}
     data['db'] = Produto.objects.filter(empresa_id=pk)
     data["empresa_id"] = pk
-    # data = {}
-    # produtos = list(Produto.objects.filter(empresa_id=pk).all())
-    # produtos_json = serializers.serialize('json', produtos)
-    # data['db'] = produtos_json
     print(data)
     return render(request, "indexProducts.html", data)
 
